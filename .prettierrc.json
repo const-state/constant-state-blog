@@ -1,0 +1,14 @@
+{
+    "astroSortOrder": "markup | styles",
+    "astroAllowShorthand": false,
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "singleAttributePerLine": true,
+    "vueIndentScriptAndStyle": true,
+    "options": {
+        "editorConfig": true
+    }
+}

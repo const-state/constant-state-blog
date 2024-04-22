@@ -1,0 +1,81 @@
+---
+import Layout from './Layout.astro'
+import SectionContainer from './SectionContainer.astro'
+import Footer from '../components/Footer.astro'
+import Navigation from '../components/Navigation.astro'
+
+const { frontmatter } = Astro.props
+const pubDate = frontmatter.pubDate.toString().slice(4, 15)
+---
+
+<style lang="scss">
+    * + * {
+        margin-top: var(--size-5);
+    }
+
+    .podcast-info {
+        padding-block-start: var(--size-fluid-5);
+        .podcast-date {
+            text-transform: uppercase;
+            font-family: var(--font-mono);
+            font-weight: var(--font-weight-6);
+            font-size: var(--font-size-1);
+            color: var(--cyan-4);
+
+            + .podcast-title {
+                margin-top: var(--size-00);
+            }
+        }
+    }
+
+    .podcast-youtube-embed {
+        position: relative;
+        box-shadow: var(--shadow-3);
+        border-radius: var(--radius-2);
+        overflow: hidden;
+
+        .podcast-iframe {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+        }
+    }
+
+    .podcast-content {
+        padding-block-end: var(--size-fluid-5);
+        margin-top: var(--size-8);
+    }
+</style>
+
+<Layout title={frontmatter.title}>
+    <Navigation />
+
+    <main class="page-wrapper">
+        <SectionContainer>
+            <div class="full-width">
+                <div class="podcast-info">
+                    <span class="podcast-date">{pubDate}</span>
+                    <h1 class="podcast-title">
+                        {frontmatter.title}
+                    </h1>
+                    <p class="podcast-description">{frontmatter.description}</p>
+                </div>
+                <div class="podcast-youtube-embed">
+                    <iframe
+                        class="podcast-iframe"
+                        src={frontmatter.video}
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+                <div class="podcast-content">
+                    <slot />
+                </div>
+            </div>
+        </SectionContainer>
+    </main>
+
+    <Footer />
+</Layout>

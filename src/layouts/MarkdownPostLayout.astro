@@ -1,0 +1,19 @@
+---
+import Layout from './Layout.astro'
+import SectionContainer from './SectionContainer.astro'
+
+const { frontmatter } = Astro.props
+---
+
+<Layout title="">
+    <SectionContainer>
+        <p>{frontmatter.pubDate}</p>
+        <p><em>{frontmatter.description}</em></p>
+        <img
+            src={frontmatter.image.src}
+            width="300"
+            alt={frontmatter.image.alt}
+        />
+        <slot />
+    </SectionContainer>
+</Layout>

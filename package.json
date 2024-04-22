@@ -1,17 +1,26 @@
 {
-  "name": "projects-constant-state",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^4.6.0",
-    "@astrojs/check": "^0.5.10",
-    "typescript": "^5.4.5"
-  }
+    "name": "projects-constant-state",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro check && astro build",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@astrojs/check": "^0.5.10",
+        "@fontsource/fira-sans-condensed": "^5.0.12",
+        "@fontsource/karma": "^5.0.12",
+        "astro": "^4.6.0",
+        "open-props": "^1.7.2",
+        "postcss-jit-props": "^1.0.14",
+        "typescript": "^5.4.5"
+    },
+    "devDependencies": {
+        "prettier": "^3.2.5",
+        "prettier-plugin-astro": "^0.13.0",
+        "sass": "^1.75.0"
+    }
 }
