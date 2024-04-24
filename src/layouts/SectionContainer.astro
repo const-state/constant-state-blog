@@ -1,29 +1,36 @@
 ---
-import 'open-props/sizes.min.css'
 
-const { frontmatter } = Astro.props
-const title = frontmatter ? frontmatter.title : ''
 ---
 
-<style lang="scss">
+<style>
     .container {
         display: flex;
-        margin-right: var(--size-fluid-3);
-        margin-left: var(--size-fluid-3);
+        margin-right: var(--size-fluid-2);
+        margin-left: var(--size-fluid-2);
 
-        @media (min-width: 800px) {
+        @media (--sm-n-above) {
+            margin-right: var(--size-fluid-3);
+            margin-left: var(--size-fluid-3);
+        }
+
+        @media (--md-n-above) {
             margin-right: var(--size-fluid-5);
             margin-left: var(--size-fluid-5);
         }
 
-        @media (min-width: 1200px) {
+        @media (--lg-n-above) {
             margin-right: var(--size-fluid-7);
             margin-left: var(--size-fluid-7);
         }
 
-        @media (min-width: 1440px) {
+        @media (--xl-n-above) {
             margin-right: var(--size-fluid-9);
             margin-left: var(--size-fluid-9);
+        }
+
+        @media (--xxl-n-above) {
+            margin-right: var(--size-fluid-10);
+            margin-left: var(--size-fluid-10);
         }
     }
 </style>

@@ -137,9 +137,9 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] };
 };
 "posts": {
-"learning-how-to-learn.md": {
-	id: "learning-how-to-learn.md";
-  slug: "learning-how-to-learn";
+"astro.md": {
+	id: "astro.md";
+  slug: "astro";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">

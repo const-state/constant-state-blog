@@ -1,19 +1,65 @@
 ---
 import Layout from './Layout.astro'
 import SectionContainer from './SectionContainer.astro'
+import Navigation from '../components/Navigation.astro'
+import Footer from '../components/Footer.astro'
 
 const { frontmatter } = Astro.props
+const pubDate = frontmatter.pubDate.toString().slice(4, 15)
 ---
 
-<Layout title="">
-    <SectionContainer>
-        <p>{frontmatter.pubDate}</p>
-        <p><em>{frontmatter.description}</em></p>
-        <img
-            src={frontmatter.image.src}
-            width="300"
-            alt={frontmatter.image.alt}
-        />
-        <slot />
-    </SectionContainer>
+<style>
+    * + * {
+        margin-top: var(--size-4);
+    }
+
+    .post-info {
+        padding-block-start: var(--size-fluid-5);
+        .post-date {
+            text-transform: uppercase;
+            font-family: var(--font-mono);
+            font-weight: var(--font-weight-6);
+            font-size: var(--font-size-1);
+            color: var(--brand-secondary);
+
+            + .post-title {
+                margin-top: var(--size-00);
+            }
+        }
+    }
+
+    .post-content {
+        padding-block-end: var(--size-fluid-5);
+        margin-top: var(--size-8);
+    }
+
+    .blog-width {
+        max-width: 48.25rem;
+        margin-inline: auto;
+    }
+</style>
+
+<Layout title={frontmatter.title}>
+    <Navigation />
+
+    <main class="page-wrapper">
+        <SectionContainer>
+            <div class="full-width blog-width">
+                <div class="post-info">
+                    <p class="post-date">{pubDate}</p>
+                    <h1 class="post-title">{frontmatter.title}</h1>
+                    <p>{frontmatter.description}</p>
+                </div>
+                <img
+                    src={frontmatter.image.src}
+                    alt={frontmatter.image.alt}
+                />
+                <div class="post-content">
+                    <slot />
+                </div>
+            </div>
+        </SectionContainer>
+    </main>
+
+    <Footer />
 </Layout>

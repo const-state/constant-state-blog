@@ -19,6 +19,8 @@
         "typescript": "^5.4.5"
     },
     "devDependencies": {
+        "postcss-custom-media": "^10.0.4",
+        "postcss-nesting": "^12.1.2",
         "prettier": "^3.2.5",
         "prettier-plugin-astro": "^0.13.0",
         "sass": "^1.75.0"
