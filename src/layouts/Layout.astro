@@ -9,6 +9,9 @@ import 'open-props/colors-hsl.min.css'
 import 'open-props/gradients.min.css'
 import 'open-props/colors.shadow.min.css'
 
+import Footer from '../components/Footer.astro'
+import Navigation from '../components/Navigation.astro'
+
 const { title } = Astro.props
 ---
 
@@ -40,19 +43,26 @@ const { title } = Astro.props
     <body>
         <style is:global lang="scss">
             :root {
+                // brand colors
                 --brand-primary: hsl(318.73deg 100% 69.22%);
                 --brand-secondary: hsl(210.32deg 97.89% 81.37%);
 
                 --text-dark: hsl(var(--gray-2-hsl) / 90%);
 
-                --surface-1-dark: hsl(271.34deg 84.81% 15.49%);
-                --surface-2-dark: hsl(261.43deg 67.74% 12.16%);
+                // surface colors - background-color
+                --surface-1-dark: hsl(304.09deg 36.97% 53.33%);
+                --surface-2-dark: hsl(294.62deg 33.62% 45.49%);
+                --surface-3-dark: hsl(271.34deg 84.81% 15.49%);
+                --surface-4-dark: hsl(261.43deg 67.74% 12.16%);
+                --surface-5-dark: hsl(258.14deg 41.75% 20.2%);
+                --surface-6-dark: hsl(253.71deg 42.17% 16.27%);
+
                 --surface-1-gradient: var(--gradient-5);
             }
 
             html {
                 block-size: 100%;
-                background-color: var(--surface-2-dark);
+                background-color: var(--surface-5-dark);
                 color: var(--text-dark);
                 font-size: var(--font-size-2);
             }
@@ -79,6 +89,8 @@ const { title } = Astro.props
                 max-width: 100%;
             }
         </style>
+        <Navigation />
         <slot />
+        <Footer />
     </body>
 </html>

@@ -128,6 +128,13 @@ declare module 'astro:content' {
 		"podcast": {
 };
 "podcasts": {
+"are-you-content-with-your-content-strategy.md": {
+	id: "are-you-content-with-your-content-strategy.md";
+  slug: "are-you-content-with-your-content-strategy";
+  body: string;
+  collection: "podcasts";
+  data: any
+} & { render(): Render[".md"] };
 "learning-how-to-learn.md": {
 	id: "learning-how-to-learn.md";
   slug: "learning-how-to-learn";
@@ -140,6 +147,13 @@ declare module 'astro:content' {
 "astro.md": {
 	id: "astro.md";
   slug: "astro";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"learning-how-to-learn.md": {
+	id: "learning-how-to-learn.md";
+  slug: "learning-how-to-learn";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">

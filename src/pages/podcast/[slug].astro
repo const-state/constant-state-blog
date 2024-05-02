@@ -11,8 +11,16 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const allPosts = await getCollection("posts");
 ---
 
 <PodcastLayout frontmatter={entry.data}>
-    <Content />
+      <ul>
+    {
+      allPosts.map((post) => (
+        <a href={`/posts/${post.slug}/`} title={post.data.title} />
+      ))
+    }
+  </ul>
 </PodcastLayout>

@@ -2,12 +2,51 @@
 import SectionContainer from '../layouts/SectionContainer.astro'
 ---
 
-<style>
+<style lang="scss">
     .cs-navigation {
+        position: sticky;
+        top: 0;
         padding-block: var(--size-fluid-2);
-        background-color: var(--surface-1-dark);
+        background-color: var(--surface-6-dark);
+        box-shadow: 0 0.125rem 0.5rem 0.0125rem var(--brand-secondary);
+        z-index: var(--layer-5);
+
+        .main-nav {
+            ul {
+                display: flex;
+                column-gap: var(--size-6);
+                padding: 0;
+            }
+        }
+
+        .nav-item {
+            list-style: none;
+            padding: 0;
+
+            &:hover {
+                a {
+                    color: var(--brand-primary);
+                }
+            }
+
+            a {
+                color: var(--surface-dark-1);
+                font-size: var(--size-fluid-2);
+                transition: var(--ease-in-2);
+                text-decoration: none;
+            }
+        }
     }
 </style>
 <header class="cs-navigation">
-    <SectionContainer />
+    <SectionContainer>
+        <div class="brand"></div>
+        <nav class="main-nav">
+            <ul>
+                <li class="nav-item"><a href="/">Home</a></li>
+                <li class="nav-item"><a href="/podcast">Podcast</a></li>
+                <li class="nav-item"><a href="/blog">Blog</a></li>
+            </ul>
+        </nav>
+    </SectionContainer>
 </header>

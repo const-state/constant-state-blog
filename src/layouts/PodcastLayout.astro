@@ -47,8 +47,6 @@ const pubDate = frontmatter.pubDate.toString().slice(4, 15)
 </style>
 
 <Layout title={frontmatter.title}>
-    <Navigation />
-
     <main class="page-wrapper">
         <SectionContainer>
             <div class="full-width">
@@ -62,10 +60,10 @@ const pubDate = frontmatter.pubDate.toString().slice(4, 15)
                 <div class="podcast-youtube-embed">
                     <iframe
                         class="podcast-iframe"
-                        src={frontmatter.video}
+                        src={`${frontmatter.video}&showinfo=0&controls=0`}
                         title="YouTube video player"
                         frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; modestbranding"
                         referrerpolicy="strict-origin-when-cross-origin"
                         allowfullscreen
                     ></iframe>
@@ -76,6 +74,4 @@ const pubDate = frontmatter.pubDate.toString().slice(4, 15)
             </div>
         </SectionContainer>
     </main>
-
-    <Footer />
 </Layout>
