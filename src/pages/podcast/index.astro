@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 import SectionContainer from '../../layouts/SectionContainer.astro'
+import Card from '../../components/Card.astro'
 
 export async function getStaticPaths() {
     const podCasts = await getCollection('podcasts')
@@ -14,32 +15,28 @@ export async function getStaticPaths() {
 const allPodcasts = await getCollection('podcasts')
 ---
 
-<style>
-.cs-allpost {
-padding: 0;
-list-style: none;
-}
+<style lang="scss">
+    .cs-allpost {
+        display: flex;
+        gap: var(--size-fluid-2);
+        padding-block: var(--size-fluid-6);
+        padding-inline: 0;
+        list-style: none;
+    }
 </style>
 <Layout title="podcast">
     <SectionContainer>
-<ul class="cs-allpost">
-        {
-            allPodcasts.map((podcast) => (
-                <li class="cs-post-item">
-                    <a
+        <ul class="cs-allpost">
+            {
+                allPodcasts.map((podcast) => (
+                    <Card
                         href={`/podcast/${podcast.slug}/`}
                         title={podcast.data.title}
-                        aria-label={podcast.data.title}
-                    >
-                    <img
-                        src=`https://img.youtube.com/vi/${podcast.data.thumbnail}/hqdefault.jpg`
-                        alt=""
+                        imageSrc={`https://img.youtube.com/vi/${podcast.data.thumbnail}/hqdefault.jpg`}
+                        imageAlt={podcast.data.title}
                     />
-                    </a>
-                </li>
-            ))
-        }
-    </ul>
+                ))
+            }
+        </ul>
     </SectionContainer>
-    
 </Layout>

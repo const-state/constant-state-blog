@@ -3,9 +3,7 @@ author: Mike
 title: Astro 
 description: Astro The Static Site Generator that Combines the Best of Both Worlds
 pubDate: 2024-04-23
-image:
-    src: /public/astro.jpeg
-    alt: rocket ship
+imageSrc: /public/astro.jpeg
 tags: [Static Site Generators, JavaScript]
 ---
 

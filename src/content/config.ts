@@ -7,11 +7,7 @@ const postCollection = defineCollection({
         title: z.string(),
         description: z.string(),
         pubDate: z.date(),
-        thumbnail: z.string().default(''),
-        image: z.object({
-            src: z.string(),
-            alt: z.string().default(''),
-        }),
+        imageSrc: z.string(),
         tags: z.array(z.string()),
     }),
 });
@@ -24,6 +20,7 @@ const podcastCollectiono = defineCollection({
         description: z.string(),
         pubDate: z.date(),
         video: z.string(),
+        thumbnail: z.string(),
         tags: z.array(z.string()),
     })
 })

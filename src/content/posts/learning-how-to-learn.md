@@ -3,9 +3,7 @@ title: Learning How to Learn
 pubDate: 2024-02-13 
 description: Constant learning is essential for personal and professional growth, and it should be a continuous journey of embracing new information with an open mind and leveraging resources.
 tags: [Learning]
-image:
-    src: /assets/constant-learning.webp
-    alt: the constant state of learning
+imageSrc: /public/constant-learning.webp
 ---
 
 **Constant learning is crucial for personal and professional growth.**

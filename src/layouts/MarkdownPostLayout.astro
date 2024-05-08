@@ -1,8 +1,7 @@
 ---
 import Layout from './Layout.astro'
 import SectionContainer from './SectionContainer.astro'
-import Navigation from '../components/Navigation.astro'
-import Footer from '../components/Footer.astro'
+import { Image } from 'astro:assets'
 
 const { frontmatter } = Astro.props
 const pubDate = frontmatter.pubDate.toString().slice(4, 15)
@@ -48,9 +47,11 @@ const pubDate = frontmatter.pubDate.toString().slice(4, 15)
                     <h1 class="post-title">{frontmatter.title}</h1>
                     <p>{frontmatter.description}</p>
                 </div>
-                <img
-                    src={frontmatter.image.src}
-                    alt={frontmatter.image.alt}
+                <Image
+                    width={400}
+                    height={400}
+                    src={frontmatter.imageSrc}
+                    alt={frontmatter.title}
                 />
                 <div class="post-content">
                     <slot />

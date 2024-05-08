@@ -1,15 +1,25 @@
 ---
+import { Image } from 'astro:assets'
+
 interface Props {
     title: string
     body: string
     href: string
+    imageSrc: string
+    imageAlt: string
 }
 
-const { href, title, body } = Astro.props
+const { href, title, body, imageSrc } = Astro.props
 ---
 
 <li class="card">
     <a href={href}>
+        <Image
+            class="card-img"
+            inferSize
+            src={imageSrc}
+            alt={`thumbnail for ${title}`}
+        />
         <h2>
             {title}
             <span>&rarr;</span>
@@ -19,43 +29,51 @@ const { href, title, body } = Astro.props
         </p>
     </a>
 </li>
-<style>
-    .link-card {
+<style lang="scss">
+    .card {
         list-style: none;
         display: flex;
         padding: 1px;
-        background-color: #23262d;
         background-image: none;
         background-size: 400%;
-        border-radius: 7px;
+        border-radius: var(--size-2);
         background-position: 100%;
         transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+        .card-img {
+            border-radius: var(--size-2);
+            background-position: 100%;
+            margin-block-end: var(--size-3);
+        }
+
+        a {
+            width: 100%;
+            text-decoration: none;
+            line-height: 1.4;
+            padding: calc(1.5rem - 1px);
+            border-radius: var(--size-2);
+            color: white;
+            background-color: var(--surface-6-dark);
+            box-shadow: 0 0 0 1px var(--accent-light);
+            opacity: 0.8;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        p {
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+        }
     }
-    .link-card > a {
-        width: 100%;
-        text-decoration: none;
-        line-height: 1.4;
-        padding: calc(1.5rem - 1px);
-        border-radius: 8px;
-        color: white;
-        background-color: #23262d;
-        opacity: 0.8;
-    }
-    h2 {
-        margin: 0;
-        font-size: 1.25rem;
-        transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    p {
-        margin-top: 0.5rem;
-        margin-bottom: 0;
-    }
-    .link-card:is(:hover, :focus-within) {
+
+    .card:is(:hover, :focus-within) {
         background-position: 0;
         background-image: var(--accent-gradient);
     }
-    .link-card:is(:hover, :focus-within) h2 {
+    .card:is(:hover, :focus-within) h2 {
         color: rgb(var(--accent-light));
     }
 </style>
