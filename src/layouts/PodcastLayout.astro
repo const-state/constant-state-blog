@@ -30,9 +30,14 @@ const pubDate = frontmatter.pubDate.toString().slice(4, 15)
 
     .podcast-youtube-embed {
         position: relative;
-        box-shadow: var(--shadow-3);
+        box-shadow: 0 0.25rem 0.5rem hsl(210, 50%, 40%);
         border-radius: var(--radius-2);
         overflow: hidden;
+        transition: box-shadow 0.3s ease-in-out;
+
+        &:hover {
+            box-shadow: 0 0.5rem 1rem var(--brand-primary);
+        }
 
         .podcast-iframe {
             aspect-ratio: 16 / 9;
