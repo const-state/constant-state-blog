@@ -1,0 +1,39 @@
+---
+
+---
+
+<style>
+    .container {
+        display: flex;
+        margin-right: var(--size-fluid-2);
+        margin-left: var(--size-fluid-2);
+
+        @media (--sm-n-above) {
+            margin-right: var(--size-fluid-3);
+            margin-left: var(--size-fluid-3);
+        }
+
+        @media (--md-n-above) {
+            margin-right: var(--size-fluid-5);
+            margin-left: var(--size-fluid-5);
+        }
+
+        @media (--lg-n-above) {
+            margin-right: var(--size-fluid-7);
+            margin-left: var(--size-fluid-7);
+        }
+
+        @media (--xl-n-above) {
+            margin-right: var(--size-fluid-9);
+            margin-left: var(--size-fluid-9);
+        }
+
+        @media (--xxl-n-above) {
+            margin-right: var(--size-fluid-10);
+            margin-left: var(--size-fluid-10);
+        }
+    }
+</style>
+<section class="container">
+    <slot />
+</section>

@@ -56,13 +56,16 @@ const { title } = Astro.props
                 --surface-4-dark: hsl(261.43deg 67.74% 12.16%);
                 --surface-5-dark: hsl(258.14deg 41.75% 20.2%);
                 --surface-6-dark: hsl(253.71deg 42.17% 16.27%);
+                --surface-8-dark: HSL(0, 0%, 20%);
+                --surface-9-dark: HSL(0, 0%, 6.67%);
+                --surface-10-dark: HSL(0, 0%, 0%);
 
                 --surface-1-gradient: var(--gradient-5);
             }
 
             html {
                 block-size: 100%;
-                background-color: var(--surface-5-dark);
+                background-color: var(--surface-9-dark);
                 color: var(--text-dark);
                 font-size: var(--font-size-2);
             }
@@ -73,7 +76,9 @@ const { title } = Astro.props
             h4,
             h5,
             h6 {
-                color: var(--brand-primary);
+                background: linear-gradient(to right, var(--brand-secondary), var(--brand-primary));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
 
             :where(h1) {

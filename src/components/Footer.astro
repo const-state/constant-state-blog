@@ -4,8 +4,21 @@
 
 <style>
     .cs-footer {
-        background-color: var(--surface-1-dark);
+        position: relative;
+        background-color: var(--surface-9-dark);
         padding-block: var(--size-fluid-5);
+        box-shadow: 0 0.125rem 0.5rem 0.0125rem var(--surface-1-dark);
+        
+
+        &:before {
+            content: '';
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--brand-secondary), var(--brand-primary));
+            opacity: 0.2;
+        }
     }
 </style>
 <footer class="cs-footer"></footer>
