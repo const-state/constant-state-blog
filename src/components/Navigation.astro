@@ -9,20 +9,7 @@ import SectionContainer from '../layouts/SectionContainer.astro'
         padding-block: var(--size-fluid-2);
         background-color: var(--surface-10-dark);
         box-shadow: 0 -0.0125rem 0.5rem 0.0125rem var(--surface-1-dark);
-        z-index: var(--layer-1);
-        transition: transform 0.4s ease-in-out;
-
-        &:after {
-            content: '';
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--brand-secondary) 0%, var(--brand-primary) 100%);
-            animation: gradientAnimation 1.5s infinite alternate;
-            z-index: var(--layer-0);
-            opacity: 0.18;
-        }
+        z-index: var(--layer-5);
 
         &.mini {
             top: 0;
@@ -56,17 +43,6 @@ import SectionContainer from '../layouts/SectionContainer.astro'
         }
     }
 
-    @keyframes gradientAnimation {
-        0% {
-            background: linear-gradient(145deg, var(--brand-secondary) 0%, var(--brand-primary) 40%, var(--brand-secondary) 60%, var(--brand-primary) 100%);
-        }
-        50% {
-            background: linear-gradient(175deg, var(--brand-secondary) 0%, var(--brand-primary) 40%, var(--brand-secondary) 60%, var(--brand-primary) 100%);
-        }
-        100% {
-            background: linear-gradient(75deg, var(--brand-secondary) 0%, var(--brand-primary) 40%, var(--brand-secondary) 60%, var(--brand-primary) 100%);
-        }
-    }
 </style>
 
 <script>

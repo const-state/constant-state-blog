@@ -7,74 +7,111 @@ interface Props {
     href: string
     imageSrc: string
     imageAlt: string
+    badge?: string
 }
 
-const { href, title, body, imageSrc } = Astro.props
+const { href, title, body, imageSrc, badge } = Astro.props
 ---
 
-<li class="card">
+<li class="cs-card">
     <a href={href}>
         <Image
-            class="card-img"
+            class="cs-card-img"
             inferSize
             src={imageSrc}
             alt={`thumbnail for ${title}`}
         />
-        <h2>
-            {title}
-            <span>&rarr;</span>
-        </h2>
-        <p>
-            {body}
-        </p>
+        <div class="cs-card-content">
+            {
+                badge && (
+                    <div class="cs-badge-container">
+                        <span class="cs-badge">{badge}</span>
+                    </div>
+                )
+            }
+            <div class="cs-title-container">
+                <span class="cs-title">
+                    {
+                        title
+                            .split(' ')
+                            .filter((word) => !word.startsWith('#'))
+                            .join(' ')
+                    }
+                    <span>&rarr;</span>
+                </span>
+                {body && <p>{body}</p>}
+            </div>
+        </div>
     </a>
-</li>
-<style lang="scss">
-    .card {
-        list-style: none;
-        display: flex;
-        padding: 1px;
-        background-image: none;
-        background-size: 400%;
-        border-radius: var(--size-2);
-        background-position: 100%;
-        transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-
-        .card-img {
-            border-radius: var(--size-2);
-            background-position: 100%;
-            margin-block-end: var(--size-3);
-        }
-
-        a {
+    <style lang="scss">
+        .cs-card {
             width: 100%;
-            text-decoration: none;
-            line-height: 1.4;
-            padding: calc(1.5rem - 1px);
-            border-radius: var(--size-2);
-            color: white;
-            background-color: #111111;
-            box-shadow: 0 0 0 1px var(--surface-1-dark);
-            opacity: 0.8;
-        }
-
-        h2 {
+            max-width: 800px;
+            padding: 0;
             margin: 0;
-            font-size: 1.25rem;
-            transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        p {
-            margin-top: 0.5rem;
-            margin-bottom: 0;
-        }
-    }
+            list-style: none;
 
-    .card:is(:hover, :focus-within) {
-        background-position: 0;
-        background-image: var(--surface-1-dark);
-    }
+            a {
+                display: grid;
+                grid-auto-flow: column;
+                column-gap: var(--size-5);
+                width: 100%;
+                padding: calc(1.5rem - 1px);
+                background-position: 100%;
+                text-decoration: none;
+                border-radius: var(--size-2);
+                color: white;
+                background-color: var(--surface-10-dark);
+                box-shadow: 0 .125rem .25rem .125rem var(--surface-5-dark);
+                opacity: 0.8;
+            }
 
-    .card:is(:hover, :focus-within) h2 {
-        color: rgb(var(--accent-light));
-    }
-</style>
+            .cs-card-img {
+                margin-block-end: var(--size-3);
+                box-shadow: 0 0 .25rem .125rem var(--brand-secondary);
+                border-radius: var(--size-2);
+                background-position: 100%;
+                aspect-ratio: 16/9;
+            }
+
+
+            .cs-badge-container {
+                width: fit-content;
+                margin-block-end: var(--size-2);
+                color: var(--brand-secondary);
+                font-weight: var(--font-weight-9);
+                border-radius: var(--size-2);
+                padding: var(--size-1) var(--size-2);
+                background-color: var(--surface-8-dark);
+                box-shadow: 0 .125rem .25rem .125rem var(--surface-9-dark);
+            }
+
+            .cs-title {
+                margin: 0;
+                transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+                line-height: var(--font-line-height-0);
+                font-size: var(--font-size-fluid-1);
+                font-weight: var(--font-weight-6);
+                background: linear-gradient(to right, var(--brand-secondary), var(--brand-primary));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+
+            p {
+                margin-top: 0.5rem;
+                margin-bottom: 0;
+                font-size: var(--font-size-fluid-0);
+            }
+        }
+
+        .cs-card:is(:hover, :focus-within) {
+            background-position: 0;
+            background-image: var(--surface-1-dark);
+        }
+
+        .cs-card:is(:hover, :focus-within) .cs-title {
+            color: rgb(var(--accent-light));
+        }
+    </style>
+</li>
