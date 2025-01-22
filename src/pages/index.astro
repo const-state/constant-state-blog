@@ -7,13 +7,14 @@ import Card from '@/components/Card.astro'
 const videos = await getYouTubeVideos()
 ---
 
-<Layout title="My YouTube Videos">
+<Layout title="Constant State YouTube Videos">
     <SectionContainer>
-        <ul class="video-list">
+        {videos.length > 0 ? (
+            <ul class="video-list">
             {
                 videos.map((video) => (
                     <Card
-                        href={`/video/${video.id.videoId}`}
+                        href={`/podcast/${video.id.videoId}`}
                         title={video.snippet.title}
                         body={video.snippet.description}
                         imageSrc={video.snippet.thumbnails.medium.url}
@@ -23,6 +24,12 @@ const videos = await getYouTubeVideos()
                 ))
             }
         </ul>
+        ) : (
+            <div class="cs-gif-container">
+                <h1>No videos found</h1>
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmlpcWFncGY4cnh3NTZia2hnbDJ5OGcyOGFyMWFrbmc1NmRwYTVsOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fVKa6eR7g1Ri113f8p/giphy.gif" alt="Rocket Ship Taking Off" class="rocket-gif" />
+            </div>
+        )}
     </SectionContainer>
 </Layout>
 
@@ -32,9 +39,20 @@ const videos = await getYouTubeVideos()
         display: grid;
         grid-auto-flow: row;
         gap: 2rem;
-        padding: 0;
+        padding-inline: 0;
+        padding-block: var(--size-fluid-6);
         width: 100%;
         max-width: 100%;
+    }
+
+    .cs-gif-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding-block: var(--size-fluid-6);
     }
 
 </style>

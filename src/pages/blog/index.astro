@@ -1,6 +1,8 @@
 ---
+import Card from '@/components/Card.astro'
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
+import SectionContainer from '@/layouts/SectionContainer.astro'
 
 export async function getStaticPaths() {
     const posts = await getCollection('posts')
@@ -14,18 +16,31 @@ const allPosts = await getCollection('posts')
 ---
 
 <Layout title="post">
-    <ul>
-        {
-            allPosts.map((post) => (
-                <li>
-                    <a
-                        href={`/posts/${post.slug}/`}
+    <SectionContainer>
+        <ul>
+            {
+                allPosts.map((post) => (
+                    <Card 
+                        href={`/posts/${post.slug}/`} 
                         title={post.data.title}
-                    >
-                        {post.data.title}
-                    </a>
-                </li>
-            ))
-        }
-    </ul>
+                        body={post.data.description}
+                        imageSrc={`/assets/${post.slug}.jpg`}
+                        imageAlt={post.data.title}
+                        badge={`${new Date(post.data.pubDate).toLocaleDateString()}`}
+                    />
+                ))
+            }
+        </ul>
+    </SectionContainer>
 </Layout>
+
+<style>
+    ul {
+        display: grid;
+        grid-auto-flow: row;
+        gap: 2rem;
+        padding: 0;
+        margin-block: var(--size-fluid-5); 
+        width: 100%;
+    }
+</style>

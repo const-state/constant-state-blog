@@ -1,26 +1,25 @@
 ---
-import { getCollection } from 'astro:content';
-import PodcastLayout from '../../layouts/PodcastLayout.astro';
+import Layout from '../../layouts/Layout.astro';
+import { getYouTubeVideoDetails, getStaticPaths } from '../../utils/youtube';
 
-export async function getStaticPaths() {
-  const blogEntries = await getCollection('podcasts');
-  return blogEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
-  }));
-}
+export { getStaticPaths };
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
-
-const allPosts = await getCollection("posts");
+const { slug } = Astro.params;
+const video = await getYouTubeVideoDetails(slug);
 ---
 
-<PodcastLayout frontmatter={entry.data}>
-      <ul>
-    {
-      allPosts.map((post) => (
-        <a href={`/posts/${post.slug}/`} title={post.data.title} />
-      ))
-    }
-  </ul>
-</PodcastLayout>
+<Layout title={video.snippet.title}>
+    <main>
+        <h1>{video.snippet.title}</h1>
+        <p>{video.snippet.description}</p>
+        <iframe
+            width="560"
+            height="315"
+            src={`https://www.youtube.com/embed/${video.id}`}
+            title={video.snippet.title}
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+        ></iframe>
+    </main>
+</Layout>

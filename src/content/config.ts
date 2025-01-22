@@ -14,7 +14,7 @@ const postCollection = defineCollection({
         }),
 })
 
-const podcastCollectiono = defineCollection({
+const podcastCollection = defineCollection({
     type: 'content',
     schema: z.object({
         author: z.string().default('Constant State'),
@@ -29,5 +29,5 @@ const podcastCollectiono = defineCollection({
 
 export const collections = {
     posts: postCollection,
-    podcast: podcastCollectiono,
+    podcast: podcastCollection,
 }

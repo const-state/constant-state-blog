@@ -90,7 +90,6 @@ const { title } = Astro.props
 
             .page-wrapper {
                 position: relative;
-                padding-block-start: var(--size-10);
                 background-color: var(--surface-10-dark);
                 box-shadow: 0 -0.0125rem 0.5rem 0.0125rem var(--surface-1-dark);
                 z-index: var(--layer-1);
@@ -113,71 +112,71 @@ const { title } = Astro.props
                 }
             }
 
-            @keyframes gradientAnimation {
-                0% {
-                    background: linear-gradient(
-                        145deg,
-                        var(--brand-secondary) 0%,
-                        var(--brand-primary) 40%,
-                        var(--brand-secondary) 60%,
-                        var(--brand-primary) 100%
-                    );
-                }
-                10% {
-                    background: linear-gradient(
-                        155deg,
-                        var(--brand-secondary) 0%,
-                        var(--brand-primary) 40%,
-                        var(--brand-secondary) 60%,
-                        var(--brand-primary) 100%
-                    );
-                }
-                25% {
-                    background: linear-gradient(
-                        165deg,
-                        var(--brand-secondary) 0%,
-                        var(--brand-primary) 40%,
-                        var(--brand-secondary) 60%,
-                        var(--brand-primary) 100%
-                    );
-                }
-                50% {
-                    background: linear-gradient(
-                        25deg,
-                        var(--brand-secondary) 0%,
-                        var(--brand-primary) 40%,
-                        var(--brand-secondary) 60%,
-                        var(--brand-primary) 100%
-                    );
-                }
-                75% {
-                    background: linear-gradient(
-                        35deg,
-                        var(--brand-secondary) 0%,
-                        var(--brand-primary) 40%,
-                        var(--brand-secondary) 60%,
-                        var(--brand-primary) 100%
-                    );
-                }
-                90% {
-                    background: linear-gradient(
-                        55deg,
-                        var(--brand-secondary) 0%,
-                        var(--brand-primary) 40%,
-                        var(--brand-secondary) 60%,
-                        var(--brand-primary) 100%
-                    );
-                }
-                100% {
-                    background: linear-gradient(
-                        55deg,
-                        var(--brand-secondary) 0%,
-                        var(--brand-primary) 40%,
-                        var(--brand-secondary) 60%,
-                        var(--brand-primary) 100%
-                    );
-                }
-            }
+    @keyframes gradientAnimation {
+        0% {
+            background: linear-gradient(
+                145deg,
+                var(--brand-secondary) 0%,
+                var(--brand-primary) 40%,
+                var(--brand-secondary) 60%,
+                var(--brand-primary) 100%
+            );
+        }
+        10% {
+            background: linear-gradient(
+                155deg,
+                var(--brand-secondary) 0%,
+                var(--brand-primary) 40%,
+                var(--brand-secondary) 60%,
+                var(--brand-primary) 100%
+            );
+        }
+        25% {
+            background: linear-gradient(
+                165deg,
+                var(--brand-secondary) 0%,
+                var(--brand-primary) 40%,
+                var(--brand-secondary) 60%,
+                var(--brand-primary) 100%
+            );
+        }
+        50% {
+            background: linear-gradient(
+                25deg,
+                var(--brand-secondary) 0%,
+                var(--brand-primary) 40%,
+                var(--brand-secondary) 60%,
+                var(--brand-primary) 100%
+            );
+        }
+        75% {
+            background: linear-gradient(
+                35deg,
+                var(--brand-secondary) 0%,
+                var(--brand-primary) 40%,
+                var(--brand-secondary) 60%,
+                var(--brand-primary) 100%
+            );
+        }
+        90% {
+            background: linear-gradient(
+                55deg,
+                var(--brand-secondary) 0%,
+                var(--brand-primary) 40%,
+                var(--brand-secondary) 60%,
+                var(--brand-primary) 100%
+            );
+        }
+        100% {
+            background: linear-gradient(
+                55deg,
+                var(--brand-secondary) 0%,
+                var(--brand-primary) 40%,
+                var(--brand-secondary) 60%,
+                var(--brand-primary) 100%
+            );
+        }
+    }
 
             // Container styles
             .full-width {

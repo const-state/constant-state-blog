@@ -17,9 +17,10 @@ const { href, title, body, imageSrc, badge } = Astro.props
     <a href={href}>
         <Image
             class="cs-card-img"
-            inferSize
             src={imageSrc}
             alt={`thumbnail for ${title}`}
+            width={280}
+            height={158}
         />
         <div class="cs-card-content">
             {
@@ -43,47 +44,56 @@ const { href, title, body, imageSrc, badge } = Astro.props
             </div>
         </div>
     </a>
+
     <style lang="scss">
         .cs-card {
             width: 100%;
-            max-width: 800px;
             padding: 0;
             margin: 0;
             list-style: none;
+            max-width: none;
 
             a {
                 display: grid;
-                grid-auto-flow: column;
-                column-gap: var(--size-5);
+                gap: var(--size-5);
+                justify-content: center;
                 width: 100%;
-                padding: calc(1.5rem - 1px);
+                align-items: center;
+                padding: var(--size-fluid-2);
                 background-position: 100%;
                 text-decoration: none;
                 border-radius: var(--size-2);
                 color: white;
                 background-color: var(--surface-10-dark);
-                box-shadow: 0 .125rem .25rem .125rem var(--surface-5-dark);
+                box-shadow: 0 0.125rem 0.25rem 0.125rem var(--surface-5-dark);
                 opacity: 0.8;
+                transition: var(--ease-in-2);
+                transition-property: background-color, box-shadow, opacity;
+
+                @media (--md-n-above) {
+                    grid-auto-flow: column;
+                }
             }
 
             .cs-card-img {
-                margin-block-end: var(--size-3);
-                box-shadow: 0 0 .25rem .125rem var(--brand-secondary);
+                margin: 0;
+                padding: 0;
+                box-shadow: 0 0 0.25rem 0.125rem var(--brand-secondary);
                 border-radius: var(--size-2);
                 background-position: 100%;
                 aspect-ratio: 16/9;
+                margin-inline-end: auto;
             }
-
 
             .cs-badge-container {
                 width: fit-content;
                 margin-block-end: var(--size-2);
-                color: var(--brand-secondary);
-                font-weight: var(--font-weight-9);
+                color: var(--brand-primary);
+                font-weight: var(--font-weight-4);
                 border-radius: var(--size-2);
                 padding: var(--size-1) var(--size-2);
                 background-color: var(--surface-8-dark);
-                box-shadow: 0 .125rem .25rem .125rem var(--surface-9-dark);
+                box-shadow: 0 0.125rem 0.25rem 0.125rem var(--surface-9-dark);
             }
 
             .cs-title {
@@ -97,21 +107,16 @@ const { href, title, body, imageSrc, badge } = Astro.props
                 -webkit-text-fill-color: transparent;
             }
 
-
             p {
                 margin-top: 0.5rem;
                 margin-bottom: 0;
+                margin-inline-end: auto;
                 font-size: var(--font-size-fluid-0);
             }
         }
 
-        .cs-card:is(:hover, :focus-within) {
-            background-position: 0;
-            background-image: var(--surface-1-dark);
-        }
-
-        .cs-card:is(:hover, :focus-within) .cs-title {
-            color: rgb(var(--accent-light));
+        li a:is(:hover, :focus-within) {
+            box-shadow: 0 0.125rem 0.25rem 0.125rem var(--surface-1-dark);
         }
     </style>
 </li>

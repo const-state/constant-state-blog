@@ -1,80 +1,93 @@
 ---
 import SectionContainer from '../layouts/SectionContainer.astro'
+import { Image } from 'astro:assets'
 ---
-
-<style lang="scss">
-    .cs-navigation {
-        position: sticky;
-        top: 0;
-        padding-block: var(--size-fluid-2);
-        background-color: var(--surface-10-dark);
-        box-shadow: 0 -0.0125rem 0.5rem 0.0125rem var(--surface-1-dark);
-        z-index: var(--layer-5);
-
-        &.mini {
-            top: 0;
-            transform: translate3d(0, -90%, 0);
-        }
-
-        .main-nav {
-            ul {
-                position: relative;
-                display: flex;
-                column-gap: var(--size-6);
-                padding: 0;
-                z-index: var(--layer-5);
-            }
-        }
-
-        .nav-item {
-            list-style: none;
-            padding: 0;
-
-            a {
-                color: var(--brand-secondary);
-                font-size: var(--size-fluid-2);
-                transition: var(--ease-in-2);
-                text-decoration: none;
-
-                &:hover {
-                    color: var(--surface-1-dark);
-                }
-            }
-        }
-    }
-
-</style>
-
-<script>
-    let lastScrollPosition = 0
-
-    const handleScroll = () => {
-        const nav = document.querySelector('.cs-navigation') as HTMLElement
-        const navHeight = nav.offsetHeight
-        const scrollPosition = window.scrollY
-
-        if (scrollPosition < lastScrollPosition) {
-            nav.classList.remove('mini')
-        } else if (scrollPosition <= navHeight / 2) {
-            nav.classList.remove('mini')
-        } else {
-            nav.classList.add('mini')
-        }
-
-        lastScrollPosition = scrollPosition
-    }
-    window.addEventListener('scroll', handleScroll)
-</script>
 
 <header class="cs-navigation">
     <SectionContainer>
-        <div class="brand"></div>
-        <nav class="main-nav">
-            <ul>
-                <li class="nav-item"><a href="/">Home</a></li>
-                <li class="nav-item"><a href="/podcast">Podcast</a></li>
-                <li class="nav-item"><a href="/blog">Blog</a></li>
-            </ul>
-        </nav>
+        <div class="cs-logo-and-tagline">
+            <div class="cs-logo">
+                <a href="/">
+                    <Image
+                        src={import.meta.env.BASE_URL + 'constant-state-logo.jpg'}
+                        alt="Logo"
+                        width={224}
+                        height={224}
+                    />
+                </a>
+            </div>
+            <div class="cs-short-tagline">
+                <p>
+                    A podcast about the future of technology, work, ai, and the state of constant
+                    learning. Please <a
+                        class="cs-link"
+                        href="https://www.youtube.com/@const_state"
+                        >subscribe and share with your friends</a
+                    >. Check out our <a
+                        class="cs-blogs-link"
+                        href="/blog"
+                        >blogs here</a
+                    >
+                </p>
+            </div>
+            <div class="cs-callout"></div>
+        </div>
     </SectionContainer>
 </header>
+
+<style lang="scss">
+    .cs-navigation {
+        padding-block: var(--size-fluid-2);
+        background-color: var(--surface-10-dark);
+        box-shadow: 0 -0.0125rem 0.5rem 0.0125rem var(--surface-5-dark);
+        z-index: var(--layer-5);
+
+        .cs-logo-and-tagline {
+            display: grid;
+            grid-auto-flow: row;
+            gap: 1rem;
+
+            @media (--md-n-above) {
+                grid-auto-flow: column;
+                gap: 2rem;
+                align-items: center;
+            }
+        }
+
+        .cs-logo {
+            width: 7rem;
+            margin-inline: auto;
+            transition: var(--ease-in-2);
+            transition-property: opacity, transform;
+
+            @media (--md-n-above) {
+                width: 14rem;
+            }
+
+            :hover {
+                transform: rotate3d(0, 1, 0, 180deg);
+            }
+        }
+
+        .cs-short-tagline p {
+            max-width: 100%;
+            font-size: var(--size-fluid-2);
+            color: var(--brand-secondary);
+        }
+
+        .cs-link,
+        .cs-blogs-link {
+            color: var(--brand-primary);
+            text-decoration: underline;
+            text-decoration-color: var(--surface-1-dark);
+            transition: var(--ease-in-2);
+            transition-property: color, text-decoration-color;
+
+            &:hover {
+                color: var(--brand-primary);
+                text-decoration-color: var(--brand-secondary);
+            }
+            transition-property: color, text-decoration-color;
+        }
+    }
+</style>
