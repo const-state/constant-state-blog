@@ -71,7 +71,7 @@ export async function getStaticPaths() {
     const videos = await getYouTubeVideos();
 
     return videos.map((video) => ({
-        params: { slug: video.id.videoId }, // Use video ID as slug
+        params: { slug: String(video.id.videoId) }, // Ensure video ID is a string
         props: { entry: video },
     }));
 }
