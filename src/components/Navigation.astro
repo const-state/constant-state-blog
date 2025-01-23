@@ -1,6 +1,7 @@
 ---
 import SectionContainer from '../layouts/SectionContainer.astro'
-import { Image } from 'astro:assets'
+import { Picture } from 'astro:assets'
+import Image from '../assets/constant-state-logo.jpg'
 ---
 
 <header class="cs-navigation">
@@ -8,9 +9,10 @@ import { Image } from 'astro:assets'
         <div class="cs-logo-and-tagline">
             <div class="cs-logo">
                 <a href="/" transition:name={'/'}>
-                    <Image
-                        src={import.meta.env.BASE_URL + 'constant-state-logo.jpg'}
+                    <Picture
+                        src={Image}
                         alt="Logo"
+                        formats={['webp', 'avif']}
                         width={224}
                         height={224}
                     />
@@ -21,6 +23,7 @@ import { Image } from 'astro:assets'
                     A podcast about the future of technology, work, ai, and the state of constant
                     learning. Please <a
                         class="cs-link"
+                        target="_blank"
                         href="https://www.youtube.com/@const_state"
                         >subscribe and share with your friends</a
                     >. Check out our <span transition:name={'blog'}><a

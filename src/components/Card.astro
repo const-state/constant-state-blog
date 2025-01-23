@@ -1,5 +1,6 @@
 ---
-import { Image } from 'astro:assets'
+import { Image, Picture } from 'astro:assets'
+import Logo from '../assets/constant-state-logo.jpg'
 
 interface Props {
     title: string
@@ -23,9 +24,10 @@ const { href, title, body, imageSrc, imageAlt, badge, transitionName, onClick } 
     >
         {imageSrc ? (
             <div class="cs-card-image-container">
-                <Image
+                <Picture
                     class="cs-card-img"
                     src={imageSrc}
+                    formats={['webp', 'avif']}
                     alt={imageAlt || title}
                     width={280}
                     height={158}
@@ -35,9 +37,10 @@ const { href, title, body, imageSrc, imageAlt, badge, transitionName, onClick } 
         ) : (
             <div class="cs-card-image placeholder">
                 <div class="cs-card-image">
-                    <Image
-                        src={import.meta.env.BASE_URL + 'constant-state-logo.jpg'}
+                    <Picture
+                        src={Logo}
                         alt="Logo"
+                        formats={['webp', 'avif']}
                         width={190}
                         height={100}
                     />

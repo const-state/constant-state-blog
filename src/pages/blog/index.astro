@@ -3,31 +3,47 @@ import Card from '@/components/Card.astro'
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 import SectionContainer from '@/layouts/SectionContainer.astro'
+import type { ImageMetadata } from 'astro'
 
-// Import all blog post images
-const images = import.meta.glob('/src/assets/*.jpg', { eager: true, import: 'default' })
+// Import all images from assets directory
+const images = import.meta.glob<ImageMetadata>('/src/assets/*.{jpeg,jpg,png,webp}', {
+    import: 'default',
+    eager: true
+})
+
 const allPosts = await getCollection('posts')
+
+// Create a dynamic image map based on filenames
+const imageMap = Object.entries(images).reduce((acc, [path, image]) => {
+    // Extract filename without extension from path
+    const slug = path.split('/').pop()?.split('.')[0].replace('constant-', '')
+    if (slug) {
+        acc[slug] = image
+    }
+    return acc
+}, {} as Record<string, ImageMetadata>)
+
+// Debug
+console.log('Available images:', Object.keys(imageMap))
 ---
 
 <Layout title="Blog">
     <SectionContainer>
         <div class="blog-content">
             <ul>
-                {
-                    allPosts.map((post) => (
-                        <li>
-                            <Card
-                                href={`/posts/${post.slug}/`}
-                                title={post.data.title}
-                                body={post.data.description}
-                                imageSrc={images[`/src/assets/${post.slug}.jpg`]}
-                                imageAlt={post.data.title}
-                                badge={`${new Date(post.data.pubDate).toLocaleDateString()}`}
-                                transitionName={`blog-${post.slug}`}
-                            />
-                        </li>
-                    ))
-                }
+                {allPosts.map((post) => (
+                    <li>
+                        <Card
+                            href={`/posts/${post.slug}/`}
+                            title={post.data.title}
+                            body={post.data.description}
+                            imageSrc={imageMap[post.slug.replace('learning-how-to-learn', 'learning')]}
+                            imageAlt={post.data.title}
+                            badge={`${new Date(post.data.pubDate).toLocaleDateString()}`}
+                            transitionName={`blog-${post.slug}`}
+                        />
+                    </li>
+                ))}
             </ul>
         </div>
     </SectionContainer>
