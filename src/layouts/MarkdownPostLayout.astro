@@ -42,45 +42,44 @@ const pubDate = frontmatter.pubDate.toString().slice(4, 15)
     .back-button {
         display: inline-block;
         margin-block-end: var(--size-5);
+        padding-inline-end: var(--size-4);
         color: var(--brand-secondary);
         font-size: var(--size-fluid-2);
         font-weight: var(--font-weight-7);
         text-decoration: none;
         text-transform: uppercase;
-        text-decoration-color: var(--brand-secondary);
         transition: var(--ease-in-2);
-        transition-property: color, text-decoration-color, transform;
+        transition-property: color, transform;
+        will-change: transform;
     }
 
     .back-button:hover {
         color: var(--brand-primary);
         text-decoration-color: var(--brand-primary);
-        transform: translateX(-0.25rem);
+        transform: translateX(-0.25rem) translateZ(0);
     }
 </style>
 
-<Layout title={frontmatter.title}>
-    <SectionContainer>
-        <div class="full-width blog-width">
-            <div class="post-info">
-                <a
-                    href="/blog"
-                    class="back-button"
-                    ><span>&larr;</span> back</a
-                >
-                <p class="post-date">{pubDate}</p>
-                <h1 class="post-title">{frontmatter.title}</h1>
-                <p>{frontmatter.description}</p>
-            </div>
-            <Image
-                width={400}
-                height={400}
-                src={frontmatter.imageSrc}
-                alt={frontmatter.title}
-            />
-            <div class="post-content">
-                <slot />
-            </div>
+<SectionContainer>
+    <div class="full-width blog-width">
+        <div class="post-info">
+            <a
+                href="/blog"
+                class="back-button"
+                ><span>&larr;</span> back</a
+            >
+            <p class="post-date">{pubDate}</p>
+            <h1 class="post-title">{frontmatter.title}</h1>
+            <p>{frontmatter.description}</p>
         </div>
-    </SectionContainer>
-</Layout>
+        <Image
+            width={400}
+            height={400}
+            src={frontmatter.imageSrc}
+            alt={frontmatter.title}
+        />
+        <div class="post-content">
+            <slot />
+        </div>
+    </div>
+</SectionContainer>

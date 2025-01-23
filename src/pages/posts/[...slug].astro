@@ -1,18 +1,61 @@
 ---
 import { getCollection } from 'astro:content';
 import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
+import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('posts');
-  return blogEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
-  }));
+    const blogEntries = await getCollection('posts');
+    return blogEntries.map(entry => ({
+        params: { slug: entry.slug }, props: { entry },
+    }));
 }
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<MarkdownPostLayout frontmatter={entry.data}>
-    <Content />
-</MarkdownPostLayout>
+<Layout title={entry.data.title}>
+    <article transition:name={`card-blog-${entry.slug}`}>
+        <MarkdownPostLayout frontmatter={entry.data}>
+            <div transition:name={`content-blog-${entry.slug}`}>
+                <Content />
+            </div>
+        </MarkdownPostLayout>
+    </article>
+</Layout>
+
+<style>
+    .post-content {
+        width: 100%;
+        max-width: var(--size-content-3);
+        margin-inline: auto;
+        padding-block: var(--size-fluid-3);
+    }
+
+    .hero-image {
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        border-radius: var(--radius-3);
+        margin-bottom: var(--size-fluid-3);
+    }
+    
+    .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .content-wrapper {
+        padding: var(--size-fluid-2);
+    }
+
+    .post-date {
+        color: var(--text-dark);
+        margin-bottom: var(--size-fluid-2);
+    }
+
+    h1 {
+        margin-bottom: var(--size-fluid-1);
+    }
+</style>

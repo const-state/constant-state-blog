@@ -7,7 +7,7 @@ import { Image } from 'astro:assets'
     <SectionContainer>
         <div class="cs-logo-and-tagline">
             <div class="cs-logo">
-                <a href="/">
+                <a href="/" transition:name={'/'}>
                     <Image
                         src={import.meta.env.BASE_URL + 'constant-state-logo.jpg'}
                         alt="Logo"
@@ -23,11 +23,10 @@ import { Image } from 'astro:assets'
                         class="cs-link"
                         href="https://www.youtube.com/@const_state"
                         >subscribe and share with your friends</a
-                    >. Check out our <a
+                    >. Check out our <span transition:name={'blog'}><a
                         class="cs-blogs-link"
                         href="/blog"
-                        >blogs here</a
-                    >
+                        >blogs here</a></span>
                 </p>
             </div>
             <div class="cs-callout"></div>

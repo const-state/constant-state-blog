@@ -4,43 +4,52 @@ import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 import SectionContainer from '@/layouts/SectionContainer.astro'
 
-export async function getStaticPaths() {
-    const posts = await getCollection('posts')
-    return posts.map((entry) => ({
-        params: { slug: entry.slug },
-        props: { entry },
-    }))
-}
-
+// Import all blog post images
+const images = import.meta.glob('/src/assets/*.jpg', { eager: true, import: 'default' })
 const allPosts = await getCollection('posts')
 ---
 
-<Layout title="post">
+<Layout title="Blog">
     <SectionContainer>
-        <ul>
-            {
-                allPosts.map((post) => (
-                    <Card 
-                        href={`/posts/${post.slug}/`} 
-                        title={post.data.title}
-                        body={post.data.description}
-                        imageSrc={`/assets/${post.slug}.jpg`}
-                        imageAlt={post.data.title}
-                        badge={`${new Date(post.data.pubDate).toLocaleDateString()}`}
-                    />
-                ))
-            }
-        </ul>
+        <div class="blog-content">
+            <ul>
+                {
+                    allPosts.map((post) => (
+                        <li>
+                            <Card
+                                href={`/posts/${post.slug}/`}
+                                title={post.data.title}
+                                body={post.data.description}
+                                imageSrc={images[`/src/assets/${post.slug}.jpg`]}
+                                imageAlt={post.data.title}
+                                badge={`${new Date(post.data.pubDate).toLocaleDateString()}`}
+                                transitionName={`blog-${post.slug}`}
+                            />
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
     </SectionContainer>
 </Layout>
 
 <style>
+    .blog-content {
+        width: 100%;
+    }
+
     ul {
         display: grid;
         grid-auto-flow: row;
-        gap: 2rem;
         padding: 0;
-        margin-block: var(--size-fluid-5); 
+        margin-block: var(--size-fluid-5);
         width: 100%;
+    }
+
+    li {
+        list-style: none;
+        width: 100%;
+        max-width: 100%;
+        margin-block-start: 2rem;
     }
 </style>
