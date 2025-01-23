@@ -20,7 +20,7 @@ import Image from '../assets/constant-state-logo.jpg'
             </div>
             <div class="cs-short-tagline">
                 <p>
-                    A podcast about the future of technology, work, ai, and the state of constant
+                    <span class="cs-logo-text">Constant State</span> is a podcast about the future of technology, work, ai, and the state of constant
                     learning. Please <a
                         class="cs-link"
                         target="_blank"
@@ -54,20 +54,25 @@ import Image from '../assets/constant-state-logo.jpg'
                 gap: 2rem;
                 align-items: center;
             }
+
+            .cs-logo-text {
+                font-weight: 900;
+                font-size: var(--size-fluid-2);
+                color: var(--brand-primary);
+            }
         }
 
         .cs-logo {
             width: 7rem;
             margin-inline: auto;
-            transition: var(--ease-in-2);
-            transition-property: opacity, transform;
+            transition: ease-in-out .5s transform;
 
             @media (--md-n-above) {
                 width: 14rem;
             }
 
             :hover {
-                transform: rotate3d(0, 1, 0, 180deg);
+                transform: rotate3d(0, 1, 0, 180deg) scale(.97);
             }
         }
 
