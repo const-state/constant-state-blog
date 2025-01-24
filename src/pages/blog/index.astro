@@ -36,6 +36,7 @@ console.log('Available images:', Object.keys(imageMap))
                         <Card
                             href={`/posts/${post.slug}/`}
                             title={post.data.title}
+                            lines={2}
                             body={post.data.description}
                             imageSrc={imageMap[post.slug.replace('learning-how-to-learn', 'learning')]}
                             imageAlt={post.data.title}

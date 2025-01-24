@@ -15,11 +15,11 @@ const videos = await getYouTubeVideos()
                 videos.map((video) => (
                     <Card
                         href={`/podcast/${video.id.videoId}`}
+                        lines={4}
                         title={video.snippet.title}
                         body={video.snippet.description}
-                        imageSrc={video.snippet.thumbnails.medium.url}
-                        imageAlt={video.snippet.title}
                         badge={`${new Date(video.snippet.publishedAt).toLocaleDateString()}`}
+                        transitionName={`podcast-${video.id.videoId}`}
                     />
                 ))
             }
