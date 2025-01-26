@@ -3,7 +3,7 @@ interface Props {
     title: string
 }
 
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 import 'open-props/normalize.min.css'
 import 'open-props/colors-hsl.min.css'
 import 'open-props/gradients.min.css'
@@ -38,7 +38,7 @@ const { title } = Astro.props
         />
 
         <title>{title}</title>
-        <ViewTransitions />
+        <ClientRouter />
     </head>
     <body>
         <style is:global lang="scss">

@@ -3,6 +3,7 @@ import { rehypeHeadingIds } from '@astrojs/markdown-remark';
 
 // https://astro.build/config
 export default defineConfig({
+    prefetch: true,
     vite: {
         ssr: {
             noExternal: ['open-props'],

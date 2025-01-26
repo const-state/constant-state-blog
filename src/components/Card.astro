@@ -20,6 +20,7 @@ const { href, title, body, imageSrc, imageAlt, badge, lines = 2, transitionName,
 <li class="cs-card">
     <a
         href={href}
+        data-astro-prefetch
         onclick={onClick && `(e => { ${onClick.toString()}(e) })(event)`}
         transition:name={`card-${transitionName}`}
     >

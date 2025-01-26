@@ -1,0 +1,7 @@
+
+import __ASTRO_IMAGE_IMPORT_Z1T4R8D from "/src/assets/astro.jpeg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Fastro.md";
+import __ASTRO_IMAGE_IMPORT_Z115MNb from "/src/assets/constant-learning.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Flearning-how-to-learn.md";
+import __ASTRO_IMAGE_IMPORT_Z2q6XKX from "/src/assets/astro.jpeg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Fare-you-content-with-your-content-strategy.md";
+import __ASTRO_IMAGE_IMPORT_vp0Ph from "/src/assets/are-you-content-with-your-content-strategy.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Fare-you-content-with-your-content-strategy.md";
+export default new Map([["/src/assets/astro.jpeg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Fastro.md", __ASTRO_IMAGE_IMPORT_Z1T4R8D], ["/src/assets/constant-learning.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Flearning-how-to-learn.md", __ASTRO_IMAGE_IMPORT_Z115MNb], ["/src/assets/astro.jpeg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Fare-you-content-with-your-content-strategy.md", __ASTRO_IMAGE_IMPORT_Z2q6XKX], ["/src/assets/are-you-content-with-your-content-strategy.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Fare-you-content-with-your-content-strategy.md", __ASTRO_IMAGE_IMPORT_vp0Ph]]);
+		
